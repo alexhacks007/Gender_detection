@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/front.css') }}">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 1s ease-in-out;
+            background: rgba(255, 254, 254, 0.344);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(4.2px);
+-webkit-backdrop-filter: blur(4.2px);
+border: 1px solid rgba(236, 236, 236, 0.3);
+        }
+        .card-header {
+            background-color: #ffd500d9;
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .results img, .results video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            animation: zoomIn 0.5s ease-in-out;
+        }
+        .badge {
+            font-size: 1.2em;
+            margin-right: 10px;
+            animation: bounceIn 1s ease-in-out;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .button{
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    color: #fff;
+    background-color: #d5cc24;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.output_img{
+    width: 60%;
+    border-radius: 20px;
+}
+.button:hover {
+    box-shadow: 0 0 10px 1px #d5cc24;
+    color: #ffffff;
+    background-color: #d5cc24;
+}
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+        @keyframes bounceIn {
+            from, 20%, 40%, 60%, 80%, to {
+                animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            }
+            0% {
+                opacity: 0;
+                transform: scale3d(.3, .3, .3);
+            }
+            20% {
+                transform: scale3d(1.1, 1.1, 1.1);
+            }
+            40% {
+                transform: scale3d(.9, .9, .9);
+            }
+            60% {
+                opacity: 1;
+                transform: scale3d(1.03, 1.03, 1.03);
+            }
+            80% {
+                transform: scale3d(.97, .97, .97);
+            }
+            to {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                transform: translate3d(0, 40px, 0);
+                opacity: 0;
+            }
+            to {
+                transform: translate3d(0, 0, 0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header text-center">
+                <h2><i class="fas fa-chart-bar"></i> <span class="grey">D</span>etection <span class="grey">R</span>esults</h2>
+            </div>
+            <div class="card-body text-center">
+                <div class="container">
+                    <img id="output_img" style="border-radius: 10px;" src="https://undark.org/wp-content/uploads/2022/11/smartart.jpg" alt="Uploaded Image" width="60%"><br/><br/>
+                    <p class="badge badge-primary"><i class="fas fa-male"></i> Men detected: {{ results.men }}</p>
+                    <p class="badge badge-success"><i class="fas fa-female"></i> Women detected: {{ results.women }}</p>
+                    <!-- {% if image_path and image_path.endswith(('.mp4', '.avi', '.mov')) %}
+                        <video controls>
+                            <source src="{{ url_for('static', filename=image_path) }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    {% elif image_path %}
+                        <img src="{{ url_for('static', filename=image_path) }}" alt="Uploaded Image">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='images/placeholder.png') }}" alt="Placeholder Image">
+                    {% endif %} -->
+                </div>
+                <a href="{{ url_for('index') }}" class="btn mt-3 button"><i class="fas fa-upload"></i> Upload Another Image</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender Detection</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/front.css') }}">
+    <style>
+        .container {
+            margin-top: 50px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        h2 {
+            animation: bounceIn 1s ease-in-out;
+        }
+        .form-group {
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .results {
+            animation: fadeIn 1s ease-in-out;
+        }
+        .results img {
+            animation: zoomIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes bounceIn {
+            from, 20%, 40%, 60%, 80%, to {
+                animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            }
+            0% {
+                opacity: 0;
+                transform: scale3d(.3, .3, .3);
+            }
+            20% {
+                transform: scale3d(1.1, 1.1, 1.1);
+            }
+            40% {
+                transform: scale3d(.9, .9, .9);
+            }
+            60% {
+                opacity: 1;
+                transform: scale3d(1.03, 1.03, 1.03);
+            }
+            80% {
+                transform: scale3d(.97, .97, .97);
+            }
+            to {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                transform: translate3d(0, 40px, 0);
+                opacity: 0;
+            }
+            to {
+                transform: translate3d(0, 0, 0);
+                opacity: 1;
+            }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h2><span class="yellow"><i class="fas fa-venus-mars"></i> G</span>ender <span class="yellow">D</span>etection</h2>
+        <form id="uploadForm" action="{{ url_for('upload_image') }}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="image"><i class="fas fa-upload"></i> Upload your image</label>
+                <div class="upload-area">
+                    <input type="file" name="image" id="image" required></input>
+                    <div id="loading" class="loading-icon" style="display: none;"></div>
+                </div>
+            </div>
+            <button type="submit"><i class="fas fa-search"></i> Upload and Detect</button>
+        </form>
+
+        {% if results %}
+            <div class="results mt-4">
+                <h3><i class="fas fa-chart-bar"></i> Results:</h3>
+                <p><i class="fas fa-male"></i> Men detected: {{ results.men }}</p>
+                <p><i class="fas fa-female"></i> Women detected: {{ results.women }}</p>
+                <img src="{{ image_path }}" alt="Uploaded Image" width="300" class="img-thumbnail">
+            </div>
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='js/front.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

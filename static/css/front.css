@@ -1,0 +1,147 @@
+/* Reset and Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #002114;
+    color:rgb(255, 255, 255);
+    line-height: 1.6;
+}
+
+/* Header Styles */
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    margin-top: 30px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+label {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="file"] {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    color: #fff;
+    background-color: #d5cc24;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.yellow{
+    color:rgb(255, 191, 0);
+}
+#image{
+    border-color: red;
+    box-shadow: 0 0 10px 1px  rgb(255, 101, 101);
+}
+#image::file-selector-button {
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#image::file-selector-button:hover {
+    color:#00c30a;
+    background-color: #cfcfcf;
+}
+#image:valid {
+    border-color: rgb(101, 255, 101);
+    box-shadow: 0 0 10px 1px  rgb(101, 255, 101);
+    color: #00c30a;
+}
+button:hover {
+    box-shadow: 0 0 10px 1px #d5cc24;
+    color: #ffffff;
+    background-color: #d5cc24;
+}
+
+/* Results Section */
+h2 {
+    text-align: center;
+    color: #e7e7e7;
+    margin-top: 20px;
+}
+
+p {
+    text-align: center;
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+.container form{
+    height: 300px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    /* From https://css.glass */
+background: rgba(236, 236, 236, 0.34);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(4.2px);
+-webkit-backdrop-filter: blur(4.2px);
+border: 1px solid rgba(236, 236, 236, 0.3);
+}
+.container form:hover{
+background: rgba(255, 254, 254, 0.344);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(4.2px);
+-webkit-backdrop-filter: blur(4.2px);
+border: 1px solid rgba(236, 236, 236, 0.3);
+}
+.loading-icon {
+    border: 4px dotted #ffffff; /* Light grey */
+    border-top: 4px dotted #22ff00; /* Blue */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+.upload-area{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
